@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Holiday Hangman</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/reset.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="assets/css/style.css" />
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <h1>Holiday Hangman</h1>
+    </header>
+    <div class="container">
+        <div class="row">
+            <div class="col" id="leftCol">
+                
+                <img>
+                <p>Score: <span id="winCount"></span></p>
+                
+            </div>
+            <div class="col" id="rightCol">
+                <p>Current Word:</p>
+                <p id="currentWord"></p>
+                <p>Guesses left:</p>
+                <p id="guessCount"></p>
+                <p>Letters you've tried:</p>
+                <p id="lettersGuessed"></p>
+                
+            </div>
+        </div>
+        
+        
+    </div>
+    <footer>
+        <h2>Press any key to get started!</h2>
+    </footer>
+    <script src="assets/javascript/game.js"></script>
+</body>
+</html>
