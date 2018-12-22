@@ -24,9 +24,9 @@ body {
 header h1 {
     color: rgb(35, 161, 79);
     font-family: christmas;
-    text-align: left;
+    text-align: center;
     font-size: 5rem;
-    padding-left: 4rem;
+    padding-right: 5rem;
     margin-top: 0;
     margin-bottom: .5rem;
 }
@@ -39,7 +39,7 @@ header h1 {
     color: azure;
     max-width: 25%;
     text-align: center;
-    font-family: "Indie Flower", cursive;
+    font-family: "Merienda", cursive;
    
 }
 /*#leftCol h2, */
@@ -51,11 +51,12 @@ header h1 {
 #rightCol {
     font-size: 1.5rem;
     text-align: center;
-    font-family: "Indie Flower", cursive;
+    font-family: "Merienda", cursive;
     max-width: 50%;
     flex-basis: 2;
     display: block;
     color: azure;
+    text-shadow: 1px 1px 2px black, 0 0 25px rgb(35, 161, 79), 0 0 5px green;
 } 
 
 #rightCol h2 {
@@ -68,13 +69,59 @@ p {
 }
 
 footer {
-    align-content: center;
+    height: fit-content;
     bottom: 0;
 
 }
 
 footer h2 {
+    align-content: center;
     font-size: 1.8rem;
     color: rgb(220, 43, 20);
     margin-bottom: 3rem;
+    padding-left: 3rem;
 }
+
+@media screen and (min-width: 900px) {
+    body {
+        margin: 3rem;
+        margin-left: 5rem;
+    }
+
+    header h1 {
+        text-align: left;
+        display: inline-block;
+        -ms-transform: rotate(-15deg); /* IE 9 */
+        -webkit-transform: rotate(-15deg); /* Safari 3-8 */
+        transform: rotate(-15deg);
+    };
+
+  }
+
+  @media screen and (max-width: 899px) {
+    
+  @media screen and (max-width: 431px) {
+    header h1 {
+        font-size: 2.8rem;
+        text-align: center;
+        display: block;
+        padding: 0;
+        padding-top: 1rem;
+        margin: 0;
+    }
+    #leftCol {
+        max-width: 25%;
+    }
+
+    #rightCol {
+        font-size: 1.5rem;
+        text-align: center;
+        font-family: "Merienda", cursive;
+        flex-basis: 2;
+        display: block;
+        max-width: 75%;
+    } 
+    footer h2 {
+        font-size: 1.4rem;
+    }
+  }

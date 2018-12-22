@@ -21,8 +21,8 @@
 
 
 var holidayWords = ["santa", "cookies", "eggnog", "cocoa", "rudolph", "caroling", "snowflakes", "snowman", "ornaments", "mistletoe", "presents", "stockings", "reindeer", "candycane", "elves", "sleighbells"];
-var wordRandom = holidayWords[Math.floor(Math.random() * holidayWords.length)]; //grabs random word from array//
-console.log("selected word ", wordRandom);
+var wordRandom;
+
 
 //var userGuess = "n";
 var resultWord = [];
@@ -33,45 +33,71 @@ var userScore = 0;
 
 //initializing result word to underscores
 //console.log(resultWord);
-for (var i = 0; i < wordRandom.length; i++) {
-    resultWord[i] = "_";
-}
 
 //display result word in html
 function updateHTML() {
     var resultWordHTML = resultWord.join(" ");
-    //var lettersGuessedHTML = lettersGuessed.join(",");
+    var letterBankHTML = letterBank.join(" ");
     document.getElementById("currentWord").innerHTML = resultWordHTML;
     document.getElementById("guessCount").innerHTML = remainingGuesses;
-    document.getElementById("lettersGuessed").innerHTML = letterBank;
-}
-updateHTML(); //need this here?
+    document.getElementById("lettersGuessed").innerHTML = letterBankHTML;
+    document.getElementById("winCount").innerHTML = userScore;
 
-function gameStart(){
-updateHTML();
-remainingGuesses = 12;
-//drop wordRandom function in here to choose a word?
-letterBank = [];  //clear letterBank
 }
+
+
+function gameStart() {
+    document.getElementById("gameStartText").innerHTML = "Press Any Key To Get Started!";
+    resultWord = [];
+    wordRandom = holidayWords[Math.floor(Math.random() * holidayWords.length)]; //grabs random word from array//
+    console.log("selected word ", wordRandom);
+    remainingGuesses = 12;
+    letterBank = [];  //clear letterBank
+    for (var i = 0; i < wordRandom.length; i++) {
+        resultWord[i] = "_";
+    }
+    updateHTML();
+}
+
+gameStart();
+
+
 
 document.onkeyup = function keyPressed(event) {
     userGuess = event.key.toLowerCase();
-    for (var j = 0; j < wordRandom.length; j++) { //update result word based on //display result word in html user guess
-        if ((wordRandom[j] == userGuess) && remainingGuesses >= 1) {
-            resultWord[j] = userGuess;
-        }
+    document.getElementById("gameStartText").innerHTML = "";
+    for (var j = 0; j < wordRandom.length; j++) {
+        if ((wordRandom[j] == userGuess) && remainingGuesses >= 1) { //loop through to see if there are any matches in word
+            resultWord[j] = userGuess; //update result word based on key pressed/guess
+        } //QKeyEvent::text(). ??
     }
-    if (letterBank.indexOf(userGuess) != -1) {
+    if (wordRandom.indexOf(userGuess) === -1) {
+        remainingGuesses--;
+    }
+    if (letterBank.indexOf(userGuess) !== -1) {
         alert("You've already guessed that letter - try another letter!");
     }
-
     else {
         letterBank.push(userGuess);
     }
-    
+
+
     console.log(resultWord);
-    remainingGuesses--;
+
     updateHTML();
+
+    if (resultWord.indexOf("_") === -1) {
+        setTimeout(function () {
+            alert("Yay! " + wordRandom + " is correct! You guessed it! Let's play again...");
+            userScore++;
+            gameStart();
+        }, 200);
+    }
+    else if (resultWord.indexOf("_") !== -1 && remainingGuesses === 0) {
+        alert("Bah Humbug! The Grinch stole your win! The correct word was " + wordRandom + ". Let's play again...")
+        gameStart();
+    }
+
     // var updatedResultWord = resultWord.join(" ");
     // document.getElementById("currentWord").innerHTML = updatedResultWord;
 }
