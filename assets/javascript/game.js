@@ -47,7 +47,7 @@ function updateHTML() {
 
 
 function gameStart() {
-    document.getElementById("gameStartText").innerHTML = "Press Any Key To Get Started!";
+    document.getElementById("gameStartText").innerHTML = "Press Any Letter Key To Get Started!";
     resultWord = [];
     wordRandom = holidayWords[Math.floor(Math.random() * holidayWords.length)]; //grabs random word from array//
     console.log("selected word ", wordRandom);
