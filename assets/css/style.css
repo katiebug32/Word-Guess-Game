@@ -98,7 +98,7 @@ footer h2 {
 
   }
 
-  @media screen and (max-width: 899px) {
+ 
     
   @media screen and (max-width: 431px) {
     header h1 {
@@ -124,4 +124,4 @@ footer h2 {
     footer h2 {
         font-size: 1.4rem;
     }
-  }
+    }
